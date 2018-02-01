@@ -31,8 +31,12 @@ class DefaultController extends Controller
       //echo $str;
       setcookie("siteLuciana","entrou",time());
 
-      return $this->render('BlogBundle:Default:index.html.twig',
+      return $this->render('BlogBundle/elements.html.twig',
           array('str' => $str));
+
+	  /*return $this->render('default/index.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);*/
 
     }
 
