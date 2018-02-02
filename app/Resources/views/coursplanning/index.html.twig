@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Coursplannings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datecours</th>
+                <th>Desccours</th>
+                <th>Ideleve</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coursPlanning in coursPlannings %}
+            <tr>
+                <td><a href="{{ path('coursplanning_show', { 'id': coursPlanning.id }) }}">{{ coursPlanning.id }}</a></td>
+                <td>{% if coursPlanning.dateCours %}{{ coursPlanning.dateCours|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ coursPlanning.descCours }}</td>
+                <td>{{ coursPlanning.idEleve }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('coursplanning_show', { 'id': coursPlanning.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('coursplanning_edit', { 'id': coursPlanning.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('coursplanning_new') }}">Create a new coursPlanning</a>
+        </li>
+    </ul>
+{% endblock %}
